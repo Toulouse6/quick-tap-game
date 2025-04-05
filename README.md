@@ -40,7 +40,7 @@ https://github.com/Toulouse6/quick-tap-game/
 - Material UI
 - HTML + CSS
 - Axios
-- Node.js + Express
+- Node.js
 
 ---
 

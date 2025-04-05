@@ -16,6 +16,7 @@ import './LeaderboardComponent.css';
 import GameService from '../../../Services/GameService';
 import LoadingBar from '../../SharedArea/LoadingComponent/LoadingComponent';
 
+// Entry structure
 type LeaderboardEntry = {
     userId: string;
     username: string;
@@ -24,11 +25,12 @@ type LeaderboardEntry = {
 
 const LeaderboardPage: React.FC = () => {
 
+    // Leaderboard data and loading State
     const [leaderboard, setLeaderboard] = useState<LeaderboardEntry[]>([]);
     const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
 
-    // Use effect
+    // Fetch leaderboard from service
     useEffect(() => {
         GameService.getLeaderboard()
             .then(setLeaderboard)
@@ -42,12 +44,15 @@ const LeaderboardPage: React.FC = () => {
 
             <LoadingBar loading={loading} />
 
+            {/* Show data after loading */}
             {!loading && (
                 <>
                     <h2 className="leaderboard-title">HIGHSCORES TABLE</h2>
 
+                    {/* Table */}
                     <TableContainer component={Paper} className="leaderboard-table">
                         <Table>
+                            {/* Table header */}
                             <TableHead>
                                 <TableRow className="leaderboard-header">
                                     <TableCell align="center">POS</TableCell>
@@ -56,6 +61,7 @@ const LeaderboardPage: React.FC = () => {
                                 </TableRow>
                             </TableHead>
 
+                            {/* Table body */}
                             <TableBody>
                                 {leaderboard.slice(0, 5).map((entry, idx) => {
                                     const isFirst = idx === 0;
@@ -63,6 +69,7 @@ const LeaderboardPage: React.FC = () => {
 
                                     return (
                                         <TableRow key={entry.userId + idx} className={isFirst ? 'first-place-row' : ''}>
+                                            {/* 1st place */}
                                             <TableCell align="center">
                                                 {isFirst ? (
                                                     <span className="crown-cell">
@@ -73,7 +80,7 @@ const LeaderboardPage: React.FC = () => {
                                                     position
                                                 )}
                                             </TableCell>
-
+                                            {/* 1st place styling */}
                                             <TableCell align="center" className={isFirst ? 'highlight-name' : ''}>
                                                 {entry.username}
                                             </TableCell>
@@ -88,6 +95,7 @@ const LeaderboardPage: React.FC = () => {
                         </Table>
                     </TableContainer>
 
+                    {/* Restart btn */}
                     <Button
                         onClick={() => navigate('/game')}
                         variant="contained"

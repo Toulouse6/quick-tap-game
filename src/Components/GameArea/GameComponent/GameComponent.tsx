@@ -7,31 +7,37 @@ import { Side } from '../../../Models/GameModel';
 import GameService from '../../../Services/GameService';
 import GameHeader from '../../SharedArea/HeaderComponent/HeaderComponent';
 
+// Main Game Component
 const GameComponent: React.FC = () => {
+    // UI state
     const [score, setScore] = useState(0);
     const [side, setSide] = useState<Side | null>(null);
     const [feedback, setFeedback] = useState('');
     const [gameOver, setGameOver] = useState(false);
     const [, setResponseTime] = useState<number | null>(null);
     const [loading, setLoading] = useState(false);
+
+    // Get stored username
     const { username } = GameService.getStoredUser();
 
     const navigate = useNavigate();
+
+    // Refs
     const scoreRef = useRef(0);
     const sideRef = useRef<Side | null>(null);
-
     const isReadyRef = useRef(false);
     const isGameActiveRef = useRef(true);
-
     const targetDisplayedTimeRef = useRef<number>(0);
     const keypressRegisteredRef = useRef(false);
+
+    // Timeout reference
     const timeoutRefs = useRef<{ [key: string]: NodeJS.Timeout | null }>({
         display: null,
         timeout: null,
         nextRound: null
     });
 
-    // Clear Timeouts
+    // Clear Timeouts before starting a new round
     const clearAllTimeouts = () => {
         Object.values(timeoutRefs.current).forEach(timeout => {
             if (timeout) clearTimeout(timeout);
@@ -39,7 +45,7 @@ const GameComponent: React.FC = () => {
         timeoutRefs.current = { display: null, timeout: null, nextRound: null };
     };
 
-    // Send Score and Redirect
+    // Send Score and navigate to Game Over
     const sendScoreAndRedirect = async (score: number) => {
         const { userId, username } = GameService.getStoredUser();
         if (!userId) {
@@ -53,6 +59,7 @@ const GameComponent: React.FC = () => {
             const res = await GameService.saveScore(userId, score);
 
             if (res.success) {
+                // Leave fail note for 2 sec
                 await GameService.delay(2000);
                 // Redirect
                 navigate('/gameover', {
@@ -68,7 +75,7 @@ const GameComponent: React.FC = () => {
         }
     };
 
-    // Next round
+    // Next round set up
     const startNextRound = () => {
 
         clearAllTimeouts();
@@ -82,7 +89,7 @@ const GameComponent: React.FC = () => {
         if (!isGameActiveRef.current) return;
         const waitTime = Math.random() * 3000 + 2000;
 
-        // Game mode
+        //   // Show shapes
         timeoutRefs.current.display = setTimeout(() => {
 
             // Random side
@@ -110,9 +117,8 @@ const GameComponent: React.FC = () => {
     };
 
 
-    // Keyboard event
+    // Handle keypresses event
     const handleKeyPress = (e: KeyboardEvent) => {
-
         const key = e.key.toLowerCase();
         const now = Date.now();
         const currentSide = sideRef.current;
@@ -130,7 +136,7 @@ const GameComponent: React.FC = () => {
             return;
         }
 
-        // Wrong Side
+        // Wrong Side or Too late
         if (!isReadyRef.current || !currentSide) {
             isGameActiveRef.current = false;
             setFeedback('wrongKey');
@@ -139,6 +145,7 @@ const GameComponent: React.FC = () => {
             return;
         }
 
+        // Calculate reaction time
         isReadyRef.current = false;
         keypressRegisteredRef.current = true;
         const reactionTime = now - targetDisplayedTimeRef.current;
@@ -162,7 +169,7 @@ const GameComponent: React.FC = () => {
         }
     };
 
-    // Use Effect
+    // Set up listeners and start first round
     useEffect(() => {
         const handleKeyPressWrapper = (e: KeyboardEvent) => handleKeyPress(e);
         window.addEventListener('keydown', handleKeyPressWrapper);
@@ -186,6 +193,7 @@ const GameComponent: React.FC = () => {
                 <LoadingBar loading={loading} />
                 <GameHeader username={username} score={score} />
 
+                {/* Feedback */}
                 <Snackbar
                     open={feedback !== ''}
                     autoHideDuration={feedback === 'success' ? 1000 : 3000}
@@ -216,7 +224,7 @@ const GameComponent: React.FC = () => {
                 {!loading && (
                     <>
                         <div className="game-box">
-
+                            {/* Shape Zone */}
                             <div className="shape-zone">
                                 {side === 'left' && !gameOver && <div className="shape" />}
                             </div>

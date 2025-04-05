@@ -7,12 +7,17 @@ import './GameOverComponent.css';
 import GameHeader from '../../SharedArea/HeaderComponent/HeaderComponent';
 
 const GameOverPage: React.FC = () => {
+    // Loading state
     const [loading, setLoading] = useState(false);
+
+    // Router hooks
     const navigate = useNavigate();
     const location = useLocation();
+
+    // Extract score and username
     const { score, username } = location.state || {};
 
-    // Navigate
+    // Navigate with 1 sec loading delay
     const handleNavigate = async (path: string) => {
         setLoading(true);
 
@@ -28,17 +33,20 @@ const GameOverPage: React.FC = () => {
             <div className="gameover-container">
 
                 <LoadingBar loading={loading} />
+                {/* Header with username only */}
                 <GameHeader username={username} />
 
                 {!loading && (
                     <>
                         <h1 className="gameover-title">GAME OVER!</h1>
 
+                        {/* Score */}
                         <div className="score">
                             <span>Score {score}</span>
                         </div>
 
                         <div className="gameover-buttons">
+                            {/* Highscore btn */}
                             <Button
                                 variant="outlined"
                                 onClick={() => handleNavigate('/leaderboard')}
@@ -46,7 +54,7 @@ const GameOverPage: React.FC = () => {
                             >
                                 Highscore
                             </Button>
-
+                            {/* Restart btn */}
                             <Button
                                 variant="contained"
                                 onClick={() => handleNavigate('/game')}

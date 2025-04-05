@@ -1,12 +1,12 @@
 import axios from 'axios';
 import { Side } from '../Models/GameModel';
 
-// Backend endpoits
+// Backend API
 const API_BASE = 'https://quicktap-backend-219181450324.us-central1.run.app/api';
 
 const GameService = {
 
-    // Get User
+    // Create new user
     async createUser(username: string): Promise<{ userId: string }> {
         const res = await axios.post(`${API_BASE}/user`, { username });
         return res.data;
@@ -25,12 +25,12 @@ const GameService = {
     },
 
 
-    // Get Side
+    // Generate random side
     getRandomSide(): Side {
         return Math.random() < 0.5 ? 'left' : 'right';
     },
 
-    // Load user
+    // Load stored user info
     getStoredUser(): { userId: string | null; username: string } {
         return {
             userId: localStorage.getItem('userId'),
@@ -38,7 +38,7 @@ const GameService = {
         };
     },
 
-    // Delay helper
+    // Return a promise resolved after delay
     delay(ms: number): Promise<void> {
         return new Promise(resolve => setTimeout(resolve, ms));
     }

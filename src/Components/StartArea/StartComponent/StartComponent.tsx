@@ -10,21 +10,25 @@ import './StartComponent.css';
 import GameService from '../../../Services/GameService';
 
 const StartComponent: React.FC = () => {
+    // States
+    const [username, setUsername] = useState(''); // Prevent empty names
+    const [loading, setLoading] = useState(false); // Loading states
 
-    const [username, setUsername] = useState('');
-    const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
 
-    // Handle Start
+    // Handle game start
     const handleStart = async () => {
         if (!username.trim()) return;
         setLoading(true);
 
-        // Create User
         try {
+            // Fetch user from service
             const { userId } = await GameService.createUser(username);
+
+            // Save to Storage
             localStorage.setItem('userId', userId);
             localStorage.setItem('username', username);
+
             navigate('/game');
 
         } catch (err) {
@@ -32,6 +36,7 @@ const StartComponent: React.FC = () => {
             alert('Could not start game. Please try again.');
 
         } finally {
+            // Reset loading state
             setLoading(false);
         }
     };
@@ -42,6 +47,7 @@ const StartComponent: React.FC = () => {
             <h1 className="start-title">Welcome to mavens Game</h1>
 
             <Box className="start-container">
+                {/* User input */}
                 <div className="input-wrapper">
                     <label className="start-label">Enter player name</label>
 
@@ -53,7 +59,7 @@ const StartComponent: React.FC = () => {
                         placeholder="Input"
                     />
                 </div>
-
+                {/* Start button */}
                 <Button
                     variant="contained"
                     className="material-button"
