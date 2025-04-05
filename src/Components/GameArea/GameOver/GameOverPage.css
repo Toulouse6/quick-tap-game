@@ -1,0 +1,49 @@
+.gameover-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    height: 95vh;
+    width: 95%;
+    gap: 1.5rem;
+    background: #fff;
+    border-radius: 15px;
+    border: 1px solid #969894;
+}
+
+.gameover-title {
+    margin: 8rem 0 0 0;
+    font-size: 36px;
+    font-weight: 600;
+    color: #e74c3c;
+    text-align: center;
+}
+
+.score span {
+    font-weight: 600;
+    font-size: 36px;
+}
+
+.gameover-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.highscore-button {
+    background-color: white !important;
+    color: #212721 !important;
+    border: 1px solid #D8D8D8 !important;
+    height: 36px !important;
+    font-size: 16px;
+    font-weight: 300;
+    text-transform: capitalize !important;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+    padding: 0.5rem 1.5rem;
+  }
+  
+  .highscore-button:hover {
+    background-color: #ededed !important;
+  }
+  

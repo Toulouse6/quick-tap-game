@@ -1,0 +1,99 @@
+/* leaderboard container */
+.leaderboard-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 6rem 0;
+    margin: 0;
+    min-height: 100vh;
+    width: 100%;
+}
+
+/* page title */
+.leaderboard-title {
+    font-size: 36px;
+}
+
+/* table wrapper */
+.leaderboard-table {
+    max-width: 70%;
+    width: 100%;
+    margin: 0.5rem auto 2rem auto;
+    border-radius: 16px !important;
+    overflow: hidden;
+    border: 1px solid #d84883;
+    border-collapse: collapse;
+}
+
+/* table header row */
+.leaderboard-table thead tr {
+    background-color: #f9d4e4;
+}
+
+.leaderboard-table thead th {
+    max-height: 58px;
+    border-bottom: 1px solid #d84883;
+    border-left: 1px solid #d84883;
+    font-weight: 400;
+    font-size: 24px;
+    text-align: center;
+    padding: 12px;
+    color: #212721;
+}
+
+.leaderboard-table thead th:first-child {
+    border-left: none;
+}
+
+.leaderboard-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.leaderboard-table tbody td:first-child {
+    border-left: none;
+}
+
+.leaderboard-table tbody td:last-child {
+    border-right: none;
+}
+
+/* table body */
+.leaderboard-table tbody td {
+    border: 1px solid #bcbdbb;
+    font-size: 30px;
+    text-align: center;
+    padding: 14px;
+    font-weight: 400;
+    max-height: 80px;
+}
+
+/* First row */
+.first-place-row td {
+    color: #4caf50;
+}
+
+.crown-icon {
+    width: 36.8px;
+    height: auto;
+    margin: 0 10px 0 0;
+}
+
+@media (max-width: 768px) {
+
+    .leaderboard-title {
+        font-size: 28px;
+    }
+
+    .leaderboard-table thead th,
+    .leaderboard-table tbody td {
+        font-size: 18px !important;
+    }
+
+    .crown-icon {
+        width: 25px;
+        height: auto;
+        margin: 0 10px 0 0;
+    }
+
+}

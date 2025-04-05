@@ -1,0 +1,17 @@
+import React from 'react';
+import { LinearProgress } from '@mui/material';
+import './LoadingBar.css';
+
+type Props = {
+  loading: boolean;
+};
+
+const LoadingBar: React.FC<Props> = ({ loading }) => {
+  return loading ? (
+    <div className="loading-bar">
+      <LinearProgress color="secondary" />
+    </div>
+  ) : null;
+};
+
+export default LoadingBar;
