@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/quick-tap-game/static/css/main.e249dac6.css",
+    "main.js": "/quick-tap-game/static/js/main.08a93f27.js",
+    "index.html": "/quick-tap-game/index.html",
+    "main.e249dac6.css.map": "/quick-tap-game/static/css/main.e249dac6.css.map",
+    "main.08a93f27.js.map": "/quick-tap-game/static/js/main.08a93f27.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e249dac6.css",
+    "static/js/main.08a93f27.js"
+  ]
+}
