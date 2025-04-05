@@ -45,5 +45,6 @@ https://github.com/Toulouse6/quick-tap-game/
 ---
 
 **Author:** Tal Argaman
+<br>
 *All rights reserved to Mavens*
 
