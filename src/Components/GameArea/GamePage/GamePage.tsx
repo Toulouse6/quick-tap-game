@@ -19,8 +19,10 @@ const GamePage: React.FC = () => {
     const navigate = useNavigate();
     const scoreRef = useRef(0);
     const sideRef = useRef<Side | null>(null);
+
     const isReadyRef = useRef(false);
     const isGameActiveRef = useRef(true);
+
     const targetDisplayedTimeRef = useRef<number>(0);
     const keypressRegisteredRef = useRef(false);
     const timeoutRefs = useRef<{ [key: string]: NodeJS.Timeout | null }>({
@@ -29,6 +31,7 @@ const GamePage: React.FC = () => {
         nextRound: null
     });
 
+    // Clear Timeouts
     const clearAllTimeouts = () => {
         Object.values(timeoutRefs.current).forEach(timeout => {
             if (timeout) clearTimeout(timeout);
@@ -36,6 +39,7 @@ const GamePage: React.FC = () => {
         timeoutRefs.current = { display: null, timeout: null, nextRound: null };
     };
 
+    // Send Score and Redirect
     const sendScoreAndRedirect = async (score: number) => {
         const { userId, username } = GameService.getStoredUser();
         if (!userId) {
@@ -43,11 +47,14 @@ const GamePage: React.FC = () => {
             return;
         }
 
+        // Set Loading
         setLoading(true);
         try {
             const res = await GameService.saveScore(userId, score);
+
             if (res.success) {
                 await GameService.delay(2000);
+                // Redirect
                 navigate('/gameover', {
                     state: { score, username },
                 });
@@ -61,27 +68,36 @@ const GamePage: React.FC = () => {
         }
     };
 
-
+    // Next round
     const startNextRound = () => {
+
         clearAllTimeouts();
         setSide(null);
-        isReadyRef.current = false;
-        keypressRegisteredRef.current = false;
         setFeedback('');
 
+        isReadyRef.current = false;
+        keypressRegisteredRef.current = false;
+
+        // Waiting mode
         if (!isGameActiveRef.current) return;
         const waitTime = Math.random() * 3000 + 2000;
 
+        // Game mode
         timeoutRefs.current.display = setTimeout(() => {
+
+            // Random side
             const randomSide = GameService.getRandomSide();
             setSide(randomSide);
             sideRef.current = randomSide;
 
+            // Display time (1 sec)
             targetDisplayedTimeRef.current = Date.now();
             isReadyRef.current = true;
             keypressRegisteredRef.current = false;
 
             timeoutRefs.current.timeout = setTimeout(() => {
+
+                // Time is up
                 if (isReadyRef.current && isGameActiveRef.current && !keypressRegisteredRef.current) {
                     isReadyRef.current = false;
                     setFeedback('tooLate');
@@ -94,14 +110,17 @@ const GamePage: React.FC = () => {
     };
 
 
+    // Keyboard event
     const handleKeyPress = (e: KeyboardEvent) => {
+
         const key = e.key.toLowerCase();
         const now = Date.now();
         const currentSide = sideRef.current;
-
         keypressRegisteredRef.current = true;
+
         if (!isGameActiveRef.current) return;
 
+        // Too soon
         if (!isReadyRef.current) {
             isGameActiveRef.current = false;
             clearAllTimeouts();
@@ -111,6 +130,7 @@ const GamePage: React.FC = () => {
             return;
         }
 
+        // Wrong Side
         if (!isReadyRef.current || !currentSide) {
             isGameActiveRef.current = false;
             setFeedback('wrongKey');
@@ -124,6 +144,7 @@ const GamePage: React.FC = () => {
         const reactionTime = now - targetDisplayedTimeRef.current;
         setResponseTime(reactionTime);
 
+        // Successes
         if ((key === 'a' && currentSide === 'left') || (key === 'd' && currentSide === 'right')) {
             setScore(prev => {
                 const newScore = prev + 1;
@@ -133,6 +154,7 @@ const GamePage: React.FC = () => {
             setFeedback('success');
             timeoutRefs.current.nextRound = setTimeout(() => startNextRound(), 2000);
         } else {
+            // Wrong Key
             isGameActiveRef.current = false;
             setFeedback('wrongKey');
             setGameOver(true);
@@ -140,6 +162,7 @@ const GamePage: React.FC = () => {
         }
     };
 
+    // Use Effect
     useEffect(() => {
         const handleKeyPressWrapper = (e: KeyboardEvent) => handleKeyPress(e);
         window.addEventListener('keydown', handleKeyPressWrapper);
@@ -154,12 +177,15 @@ const GamePage: React.FC = () => {
         };
     }, []);
 
+    // Return
     return (
 
         <div className="outer-wrapper">
             <div className="game-container">
+
                 <LoadingBar loading={loading} />
                 <GameHeader username={username} score={score} />
+
                 <Snackbar
                     open={feedback !== ''}
                     autoHideDuration={feedback === 'success' ? 1000 : 3000}
@@ -190,12 +216,14 @@ const GamePage: React.FC = () => {
                 {!loading && (
                     <>
                         <div className="game-box">
+
                             <div className="shape-zone">
                                 {side === 'left' && !gameOver && <div className="shape" />}
                             </div>
                             <div className="shape-zone">
                                 {side === 'right' && !gameOver && <div className="shape" />}
                             </div>
+
                         </div>
                     </>
                 )}

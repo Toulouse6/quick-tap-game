@@ -11,6 +11,7 @@
     border: 1px solid #969894;
 }
 
+/* Title */
 .gameover-title {
     margin: 8rem 0 0 0;
     font-size: 36px;
@@ -19,11 +20,13 @@
     text-align: center;
 }
 
+/* Score */
 .score span {
     font-weight: 600;
     font-size: 36px;
 }
 
+/* Buttons */
 .gameover-buttons {
     display: flex;
     gap: 1rem;

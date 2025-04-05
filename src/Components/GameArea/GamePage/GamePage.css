@@ -11,6 +11,7 @@
     border: 1px solid #969894;
 }
 
+/* Score */
 .score {
     font-size: 1.5rem;
     font-weight: 600;
@@ -25,6 +26,7 @@
     margin: 6rem auto auto auto;
 }
 
+/* Shapes */
 .shape-zone {
     width: 120px;
     height: 120px;
@@ -44,12 +46,14 @@
     box-sizing: border-box;
 }
 
+/* Left shape */
 .shape-zone:first-child {
-    justify-content: flex-start; 
+    justify-content: flex-start;
     padding: 0 25%;
-  }
-  
-  .shape-zone:last-child {
+}
+
+/* Right shape */
+.shape-zone:last-child {
     justify-content: flex-end;
     padding: 0 25%;
-  }
+}

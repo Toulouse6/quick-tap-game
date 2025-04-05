@@ -19,11 +19,13 @@
     gap: 0;
 }
 
+/* Username */
 .header-username {
     color: #212721;
     margin: 0 2rem;
 }
 
+/* Score */
 .header-score {
     color: #d14384;
     margin: 0 2rem;

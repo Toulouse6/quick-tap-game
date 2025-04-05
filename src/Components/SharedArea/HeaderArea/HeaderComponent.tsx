@@ -10,6 +10,7 @@ interface GameHeaderProps {
 const HeaderComponent: React.FC<GameHeaderProps> = ({ username = 'Player Name', score, showScore = true }) => {
     const isCentered = !showScore || typeof score !== 'number';
 
+    // Return
     return (
         <div className={`game-header ${isCentered ? 'center-content' : ''}`}>
             <span className="header-username">{username}</span>

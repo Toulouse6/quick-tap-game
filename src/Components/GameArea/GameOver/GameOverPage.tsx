@@ -12,6 +12,7 @@ const GameOverPage: React.FC = () => {
     const location = useLocation();
     const { score, username } = location.state || {};
 
+    // Navigate
     const handleNavigate = async (path: string) => {
         setLoading(true);
 
@@ -21,11 +22,14 @@ const GameOverPage: React.FC = () => {
         }, 1000);
     };
 
+    // Return
     return (
         <div className="outer-wrapper">
             <div className="gameover-container">
+
                 <LoadingBar loading={loading} />
                 <GameHeader username={username} />
+
                 {!loading && (
                     <>
                         <h1 className="gameover-title">GAME OVER!</h1>
@@ -50,7 +54,6 @@ const GameOverPage: React.FC = () => {
                             >
                                 <SendIcon sx={{ marginRight: 1 }} />Restart game
                             </Button>
-
 
                         </div>
                     </>

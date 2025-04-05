@@ -25,6 +25,7 @@ body {
     padding: 0;
 }
 
+/* White box */
 .inner-card {
     background-color: white;
     width: 100%;

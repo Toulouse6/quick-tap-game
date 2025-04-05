@@ -23,10 +23,12 @@ type LeaderboardEntry = {
 };
 
 const LeaderboardPage: React.FC = () => {
+
     const [leaderboard, setLeaderboard] = useState<LeaderboardEntry[]>([]);
     const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
 
+    // Use effect
     useEffect(() => {
         GameService.getLeaderboard()
             .then(setLeaderboard)
@@ -34,8 +36,10 @@ const LeaderboardPage: React.FC = () => {
             .finally(() => setLoading(false));
     }, []);
 
+    // Return
     return (
         <div className="leaderboard-container">
+
             <LoadingBar loading={loading} />
 
             {!loading && (
@@ -51,10 +55,12 @@ const LeaderboardPage: React.FC = () => {
                                     <TableCell align="center">Score</TableCell>
                                 </TableRow>
                             </TableHead>
+
                             <TableBody>
                                 {leaderboard.slice(0, 5).map((entry, idx) => {
                                     const isFirst = idx === 0;
                                     const position = `${idx + 1}${['st', 'nd', 'rd'][idx] || 'th'}`;
+
                                     return (
                                         <TableRow key={entry.userId + idx} className={isFirst ? 'first-place-row' : ''}>
                                             <TableCell align="center">
@@ -71,6 +77,7 @@ const LeaderboardPage: React.FC = () => {
                                             <TableCell align="center" className={isFirst ? 'highlight-name' : ''}>
                                                 {entry.username}
                                             </TableCell>
+
                                             <TableCell align="center" className={isFirst ? 'highlight-score' : ''}>
                                                 {entry.score}
                                             </TableCell>

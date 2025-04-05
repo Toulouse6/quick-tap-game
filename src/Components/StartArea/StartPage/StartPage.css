@@ -8,6 +8,7 @@
     margin: 0;
 }
 
+/* Title */
 .start-title {
     margin: -20rem 0 1.5rem 0;
     font-weight: 500;
@@ -16,6 +17,7 @@
     letter-spacing: 1px;
 }
 
+/* White box */
 .start-container {
     display: flex;
     background-color: white;
@@ -28,12 +30,14 @@
     width: 100%;
 }
 
+/* Input wrapper */
 .input-wrapper {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
 }
 
+/* Label */
 .start-label {
     font-size: 16px;
     color: #212721;
@@ -41,6 +45,7 @@
     margin: -5px 0 20px 0;
 }
 
+/* Input */
 .start-input input {
     color: #212721 !important;
     border-color: #969894 !important;
@@ -58,6 +63,7 @@
 
 }
 
+/* Input placeholder */
 .start-input input::placeholder {
     font-style: italic;
     color: #969894;
@@ -70,12 +76,14 @@
 }
 
 .start-input .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline,
-.start-input .Mui-focused .MuiOutlinedInput-notchedOutline ,
+.start-input .Mui-focused .MuiOutlinedInput-notchedOutline,
 .start-input.filled .MuiOutlinedInput-root {
     border-color: #212721 !important;
 
 }
 
+
+/* Responsive */
 @media (max-width: 768px) {
 
     .start-container {
