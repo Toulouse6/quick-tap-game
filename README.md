@@ -16,7 +16,7 @@ https://github.com/Toulouse6/quick-tap-game/
 
 ---
 
-## How to Play
+## How to Play:
 
 1. Enter your name on the **Start Page** and click **Start Game**.
 2. A shape will appear randomly on the **left** or **right** side of the screen.
@@ -26,7 +26,7 @@ https://github.com/Toulouse6/quick-tap-game/
 4. You must respond **within 1 second**.
 
 
-## Game Over
+## Game Over:
 
 - Pressed the wrong key.
 - Pressed a key **before** the shape appeared.
@@ -34,7 +34,7 @@ https://github.com/Toulouse6/quick-tap-game/
 
 ---
 
-## Technologies Used
+## Technologies:
 
 - React + TypeScript
 - Material UI
@@ -46,5 +46,5 @@ https://github.com/Toulouse6/quick-tap-game/
 
 **Author:** Tal Argaman
 <br>
-*&copy; All rights reserved to Mavens.*
+*&copy; All rights reserved to mavens.*
 
