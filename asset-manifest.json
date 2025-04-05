@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/quick-tap-game/static/css/main.e249dac6.css",
-    "main.js": "/quick-tap-game/static/js/main.fab2d79d.js",
+    "main.js": "/quick-tap-game/static/js/main.94664292.js",
     "index.html": "/quick-tap-game/index.html",
     "main.e249dac6.css.map": "/quick-tap-game/static/css/main.e249dac6.css.map",
-    "main.fab2d79d.js.map": "/quick-tap-game/static/js/main.fab2d79d.js.map"
+    "main.94664292.js.map": "/quick-tap-game/static/js/main.94664292.js.map"
   },
   "entrypoints": [
     "static/css/main.e249dac6.css",
-    "static/js/main.fab2d79d.js"
+    "static/js/main.94664292.js"
   ]
 }
