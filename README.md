@@ -1,6 +1,6 @@
 # Quick Tap Game
 
-<img align="right" src="./src/Assets/crown.png" alt="Quick Tap Screenshot" width="350">
+<img align="right" src="./src/Assets/screenshot.png" alt="Quick Tap Screenshot" width="350">
 
 A fast-paced, reflex-based React game by mavens, where you test your reaction time and compete for a top score on the leaderboard!
 
