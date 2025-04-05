@@ -12,9 +12,9 @@ import {
 } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import { useNavigate } from 'react-router-dom';
-import './LeaderboardPage.css';
+import './LeaderboardComponent.css';
 import GameService from '../../../Services/GameService';
-import LoadingBar from '../../SharedArea/LoadingBar/LoadingBar';
+import LoadingBar from '../../SharedArea/LoadingComponent/LoadingComponent';
 
 type LeaderboardEntry = {
     userId: string;

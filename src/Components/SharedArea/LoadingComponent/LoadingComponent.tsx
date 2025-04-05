@@ -1,6 +1,6 @@
 import React from 'react';
 import { LinearProgress } from '@mui/material';
-import './LoadingBar.css';
+import './LoadingComponent.css';
 
 type Props = {
     loading: boolean;

@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Button } from '@mui/material';
 import { useLocation, useNavigate } from 'react-router-dom';
-import LoadingBar from '../../SharedArea/LoadingBar/LoadingBar';
+import LoadingBar from '../../SharedArea/LoadingComponent/LoadingComponent';
 import SendIcon from '@mui/icons-material/Send';
-import './GameOverPage.css';
-import GameHeader from '../../SharedArea/HeaderArea/HeaderComponent';
+import './GameOverComponent.css';
+import GameHeader from '../../SharedArea/HeaderComponent/HeaderComponent';
 
 const GameOverPage: React.FC = () => {
     const [loading, setLoading] = useState(false);

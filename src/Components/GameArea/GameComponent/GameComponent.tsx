@@ -1,13 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Snackbar, Alert } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import './GamePage.css';
-import LoadingBar from '../../SharedArea/LoadingBar/LoadingBar';
+import './GameComponent.css';
+import LoadingBar from '../../SharedArea/LoadingComponent/LoadingComponent';
 import { Side } from '../../../Models/GameModel';
 import GameService from '../../../Services/GameService';
-import GameHeader from '../../SharedArea/HeaderArea/HeaderComponent';
+import GameHeader from '../../SharedArea/HeaderComponent/HeaderComponent';
 
-const GamePage: React.FC = () => {
+const GameComponent: React.FC = () => {
     const [score, setScore] = useState(0);
     const [side, setSide] = useState<Side | null>(null);
     const [feedback, setFeedback] = useState('');
@@ -234,4 +234,4 @@ const GamePage: React.FC = () => {
     )
 };
 
-export default GamePage;
+export default GameComponent;

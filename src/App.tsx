@@ -1,18 +1,18 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import StartPage from './Components/StartArea/StartPage/StartPage';
-import GamePage from './Components/GameArea/GamePage/GamePage';
-import LeaderboardPage from './Components/LeaderboardArea/LeaderboardPage/LeaderboardPage';
-import GameOverPage from './Components/GameArea/GameOver/GameOverPage';
+import StartComponent from './Components/StartArea/StartComponent/StartComponent';
+import GameComponent from './Components/GameArea/GameComponent/GameComponent';
+import LeaderboardComponent from './Components/LeaderboardArea/LeaderboardComponent/LeaderboardComponent';
+import GameOverComponent from './Components/GameArea/GameOverComponent/GameOverComponent';
 
 const App: React.FC = () => {
     return (
         <Router basename="/quick-tap-game">
             <Routes>
-                <Route path="/" element={<StartPage />} />
-                <Route path="/game" element={<GamePage />} />
-                <Route path="/gameover" element={<GameOverPage />} />
-                <Route path="/leaderboard" element={<LeaderboardPage />} />
+                <Route path="/" element={<StartComponent />} />
+                <Route path="/game" element={<GameComponent />} />
+                <Route path="/gameover" element={<GameOverComponent />} />
+                <Route path="/leaderboard" element={<LeaderboardComponent />} />
             </Routes>
         </Router>
     );

@@ -6,10 +6,10 @@ import {
     TextField,
 } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
-import './StartPage.css';
+import './StartComponent.css';
 import GameService from '../../../Services/GameService';
 
-const StartPage: React.FC = () => {
+const StartComponent: React.FC = () => {
 
     const [username, setUsername] = useState('');
     const [loading, setLoading] = useState(false);
@@ -69,4 +69,4 @@ const StartPage: React.FC = () => {
     );
 };
 
-export default StartPage;
+export default StartComponent;
