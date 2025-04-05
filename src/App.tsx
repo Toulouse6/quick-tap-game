@@ -7,7 +7,7 @@ import GameOverPage from './Components/GameArea/GameOver/GameOverPage';
 
 const App: React.FC = () => {
     return (
-        <Router>
+        <Router basename="/quick-tap-game">
             <Routes>
                 <Route path="/" element={<StartPage />} />
                 <Route path="/game" element={<GamePage />} />
