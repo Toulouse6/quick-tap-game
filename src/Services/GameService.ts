@@ -9,18 +9,21 @@ const GameService = {
     // Create new user
     async createUser(username: string): Promise<{ userId: string }> {
         const res = await axios.post(`${API_BASE}/user`, { username });
+        console.log('[CREATE USER]:', res.data);
         return res.data;
     },
 
     // Save Score
     async saveScore(userId: string, score: number): Promise<{ success: boolean }> {
         const res = await axios.post(`${API_BASE}/saveScore`, { userId, score });
+        console.log('[SAVE SCORE]:', res.data);
         return res.data;
     },
 
     // Get Leaderboard
     async getLeaderboard() {
         const res = await axios.get(`${API_BASE}/leaderboard`);
+        console.log('[GET LEADERBOARD]:', res.data);
         return res.data.leaderboards;
     },
 
